@@ -56,12 +56,33 @@ if (isset($_POST["value_R"])){
     $current_time = getDatetimeWithOffset($_POST["timezone_offset_minutes"]);
     $script_time = (microtime(true) - $start);
 
-    echo json_encode(array(
-        "value_X" => $x,
-        "value_Y" => $y,
-        "value_R" => $r,
-        "value_hit" => $hit,
-        "current_time" => $current_time,
-        "script_time_seconds" => $script_time
-    ));
+
+    $hit_string = "";
+    $class = "";
+    if ($hit){
+        $hit_string = "Попадание";
+        $class = "inside";
+    }
+    else{
+        $hit_string = "Промах";
+        $class = "outside";
+    }
+
+    echo "<tr class='$class'>
+           <td>$x</td> 
+           <td>$y</td> 
+           <td>$r</td> 
+           <td>$hit_string</td> 
+           <td>$current_time</td>
+           <td>$script_time</td>
+           </tr>";
+
+//    echo json_encode(array(
+//        "value_X" => $x,
+//        "value_Y" => $y,
+//        "value_R" => $r,
+//        "value_hit" => $hit,
+//        "current_time" => $current_time,
+//        "script_time_seconds" => $script_time
+//    ));
 }

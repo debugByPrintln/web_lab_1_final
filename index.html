@@ -12,18 +12,22 @@
         }
 
         header {
-            display: block;
             margin-top: 1em;
-            font-size: 22px;
+            font: 16px "Calibri";
+            color: rgb(0, 35, 74);
         }
 
-        .task {
-            display: block;
-            margin: 10em;
-            margin-top: 3em;
-            margin-bottom: 3em;
-            padding: 1em;
-            font-size: 20px;
+        img:hover{
+            width: 600px;
+            height: 500px;
+        }
+
+        .main{
+            margin: auto;
+            width: 1000px;
+        }
+
+        .main, .main tr, .main td{
             border: 1px solid black;
         }
 
@@ -81,10 +85,6 @@
             font-size: 16px;
         }
 
-        table, th, td {
-            border: 1px solid black;
-        }
-
         .inside {
             background-color: #63a3dc;
         }
@@ -93,102 +93,119 @@
             background-color: #dc767b;
         }
 
-        table {
+        .response {
             width: 1000px;
-            text-align: center;
             margin: auto;
         }
 
-        footer {
-            margin-top: 3em;
+        .response tr, .response th, .response td{
+            border: 1px solid black;
         }
     </style>
 </head>
 <body>
-
-<header>
-    <h2>Лабораторная работа 1 ТРИЦР</h2>
-    <p>Выполнил: Мельников Никита Сергеевич</p>
-    <p>Группа: P33222</p>
-    <p>Вариант: 21110</p>
-</header>
-
-<div class="task">
-    <div class="text">
-        <p>Разработать PHP-скрипт, определяющий попадание точки на координатной плоскости в заданную область, и создать
-            HTML-страницу, которая формирует данные для отправки их на обработку этому скрипту.</p>
-        <p>Параметр R и координаты точки должны передаваться скрипту посредством HTTP-запроса. Скрипт должен выполнять
-            валидацию данных и возвращать HTML-страницу с таблицей, содержащей полученные параметры и результат
-            вычислений - факт попадания или непопадания точки в область. Предыдущие результаты должны сохраняться между
-            запросами и отображаться в таблице.</p>
-        <p>Кроме того, ответ должен содержать данные о текущем времени и времени работы скрипта.</p>
-    </div>
-    <div class="pic">
-        <img src="pic.png">
-    </div>
-</div>
-
-<form class="coordinates">
-
-    <div class="input_X">
-        <legend><b>Значение координаты X точки:</b></legend>
-        <input type="radio" name="value_X" value="-4">
-        <label>-4</label>
-        <input type="radio" name="value_X" value="-3">
-        <label>-3</label>
-        <input type="radio" name="value_X" value="-2">
-        <label>-2</label>
-        <input type="radio" name="value_X" value="-1">
-        <label>-1</label>
-        <input type="radio" name="value_X" value="0">
-        <label>0</label>
-        <input type="radio" name="value_X" value="1">
-        <label>1</label>
-        <input type="radio" name="value_X" value="2">
-        <label>2</label>
-        <input type="radio" name="value_X" value="3">
-        <label>3</label>
-        <input type="radio" name="value_X" value="4">
-        <label>4</label>
-    </div>
-
-    <div>
-        <legend><b>Значение координаты Y точки:</b></legend>
-        <input type="text" name="value_Y" value="" placeholder="-5...5">
-    </div>
-
-    <div>
-        <legend><b id="label_R">Значение параметра R:</b></legend>
-        <input type="button" id="b1" value="1" onclick="setR(id)">
-        <input type="button" id="b2" value="2" onclick="setR(id)">
-        <input type="button" id="b3" value="3" onclick="setR(id)">
-        <input type="button" id="b4" value="4" onclick="setR(id)">
-        <input type="button" id="b5" value="5" onclick="setR(id)">
-    </div>
-
-    <div class="result">
-        <input type="reset" id="clear-button" value="Сбросить">
-        <input type="button" id="submit-button" value="Отправить">
-    </div>
-</form>
-
-<table class="response">
-    <thead>
+<table class="main">
     <tr>
-        <th>Координата X</th>
-        <th>Координата Y</th>
-        <th>Радиус</th>
-        <th>Факт попадания</th>
-        <th>Время запроса</th>
-        <th>Время исполнения</th>
+        <td colspan="2">
+            <header>
+                <h2>Лабораторная работа 1 ТРИЦР</h2>
+                <p>Выполнил: Мельников Никита Сергеевич</p>
+                <p>Группа: P33222</p>
+                <p>Вариант: 21110</p>
+            </header>
+        </td>
     </tr>
-    </thead>
-    <tbody class="response-table-body"></tbody>
+    <tr class="task">
+        <td>
+            <div class="text">
+                <p>Разработать PHP-скрипт, определяющий попадание точки на координатной плоскости в заданную область, и создать
+                    HTML-страницу, которая формирует данные для отправки их на обработку этому скрипту.</p>
+                <p>Параметр R и координаты точки должны передаваться скрипту посредством HTTP-запроса. Скрипт должен выполнять
+                    валидацию данных и возвращать HTML-страницу с таблицей, содержащей полученные параметры и результат
+                    вычислений - факт попадания или непопадания точки в область. Предыдущие результаты должны сохраняться между
+                    запросами и отображаться в таблице.</p>
+                <p>Кроме того, ответ должен содержать данные о текущем времени и времени работы скрипта.</p>
+            </div>
+        </td>
+        <td>
+            <div class="pic">
+                <img src="pic.png">
+            </div>
+        </td>
+    </tr>
+    <tr>
+        <td colspan="2">
+            <form class="coordinates">
+
+                <div class="input_X">
+                    <legend><b>Значение параметра X:</b></legend>
+                    <input type="radio" name="value_X" value="-4">
+                    <label>-4</label>
+                    <input type="radio" name="value_X" value="-3">
+                    <label>-3</label>
+                    <input type="radio" name="value_X" value="-2">
+                    <label>-2</label>
+                    <input type="radio" name="value_X" value="-1">
+                    <label>-1</label>
+                    <input type="radio" name="value_X" value="0">
+                    <label>0</label>
+                    <input type="radio" name="value_X" value="1">
+                    <label>1</label>
+                    <input type="radio" name="value_X" value="2">
+                    <label>2</label>
+                    <input type="radio" name="value_X" value="3">
+                    <label>3</label>
+                    <input type="radio" name="value_X" value="4">
+                    <label>4</label>
+                </div>
+
+                <div>
+                    <legend><b>Значение параметра Y:</b></legend>
+                    <input type="text" name="value_Y" value="" placeholder="-5...5">
+                </div>
+
+                <div>
+                    <legend><b id="label_R">Значение параметра R:</b></legend>
+                    <input type="button" id="b1" value="1" onclick="setR(id)">
+                    <input type="button" id="b2" value="2" onclick="setR(id)">
+                    <input type="button" id="b3" value="3" onclick="setR(id)">
+                    <input type="button" id="b4" value="4" onclick="setR(id)">
+                    <input type="button" id="b5" value="5" onclick="setR(id)">
+                </div>
+
+                <div class="result">
+                    <input type="reset" id="clear-button" value="Сбросить">
+                    <input type="button" id="submit-button" value="Отправить">
+                </div>
+            </form>
+        </td>
+    </tr>
+    <tr>
+        <td colspan="2">
+            <table class="response">
+                <thead>
+                <tr>
+                    <th>Координата X</th>
+                    <th>Координата Y</th>
+                    <th>Радиус</th>
+                    <th>Факт попадания</th>
+                    <th>Дата запроса</th>
+                    <th>Время исполнения</th>
+                </tr>
+                </thead>
+                <tbody class="response-table-body"></tbody>
+            </table>
+        </td>
+    </tr>
+    <tr>
+        <td colspan="2">
+            <footer>
+                <p>Санкт-Петербург</p>
+                <p>2022 г.</p>
+            </footer>
+        </td>
+    </tr>
 </table>
-<footer>
-    <p>Санкт-Петербург</p>
-    <p>2022 г.</p>
-</footer>
 <script>
     let x, y, r;
 
@@ -196,7 +213,7 @@
         return checkX() && checkY() && checkR();
     }
 
-    function checkX(id) {
+    function checkX() {
         x = document.querySelectorAll("form.coordinates input[name=value_X]:checked");
         if (x.length === 1) {
             x = x.item(0).value;
@@ -231,27 +248,18 @@
         return parseFloat(n) >= parseFloat(min) && parseFloat(n) <= parseFloat(max);
     }
 
-    function createTableRow(json_object) {
-        document.querySelector(".response-table-body").innerHTML += `
-			<tr class="${json_object.value_hit ? "inside" : "outside"}">
-				<td>${json_object.value_X}</td>
-				<td>${json_object.value_Y}</td>
-				<td>${json_object.value_R}</td>
-				<td>${json_object.value_hit ? "Попадание" : "Промах"}</td>
-				<td>${json_object.current_time}</td>
-				<td>${(new Number(json_object.script_time_seconds * 1000)).toPrecision(3) + " ms"}</td>
-			</tr>
-			`;
+    function createTableRow(html) {
+        document.querySelector(".response-table-body").innerHTML += html;
     }
 
     function loadTable() {
         for (let i = 0; i < localStorage.length; ++i) {
-            createTableRow(JSON.parse(localStorage.getItem(i)));
+            createTableRow(localStorage.getItem(i));
         }
     }
 
     function onAjaxSuccess(data) {
-        localStorage.setItem(localStorage.length, JSON.stringify(data));
+        localStorage.setItem(localStorage.length, data);
         createTableRow(data);
     }
 
@@ -271,7 +279,7 @@
                     "timezone_offset_minutes": (new Date()).getTimezoneOffset()
                 },
                 success: onAjaxSuccess,
-                dataType: "json"
+                dataType: "html"
             });
         }
     };
@@ -279,7 +287,6 @@
     let button_clear = document.getElementById("clear-button");
     button_clear.onclick = function () {
         document.querySelector(".response-table-body").innerHTML = "";
-        document.getElementById("label_R").innerText = "Значение параметра R:";
         localStorage.clear();
     };
 
